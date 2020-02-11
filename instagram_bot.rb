@@ -3,10 +3,6 @@ require 'selenium-webdriver'
 require 'open-uri'
 require_relative 'login_info'
 
-#puts username
-
-# cd /home/benjamin/Documents/instagram-bot
-
 
 username = 'rosadj.music@gmail.com'
 password = 'seasonalfrequencies2019'
@@ -168,20 +164,28 @@ p final_array2
 p final_array2.size
 
 ##############################################################################################################################################################
-# # 1. clean up list
-# # 2. Iterate through list of users
-# # 3. Go to webpage of a specific user
-# driver.navigate.to "https://www.instagram.com/#{}/"
-# # 4. click th unfollow button
 
 final_array2.each do |account|
   user_account = account[0].to_s
     unless user_account == "PEOPLE" || user_account == "HASHTAGS"
       driver.navigate.to "https://www.instagram.com/#{user_account}/"
-      sleep (4)
-      driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/header/section/div[1]/div[1]/span/span[1]/button').click
-      sleep(3)
-      driver.find_element(:xpath, '//html/body/div[4]/div/div/div[3]/button[1]').click
-      sleep(rand(60))
+      sleep(4)
+      begin
+      unfollow_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/header/section/div[1]/div[1]/span/span[1]/button')
+      unfollow_button.click
+      rescue Exception => e
+        sleep(3)
+        puts "#{user_account} could no be unfollowed.."
+        # code that deals with some exception
+      else
+        sleep(3)
+        uf_verification_button = driver.find_element(:xpath, '//html/body/div[4]/div/div/div[3]/button[1]')
+        uf_verification_button.click
+        sleep(rand(60))
+      ensure
+        # ensure that this code always runs, no matter what
+        # does not change the final value of the block
+        # puts 'test complete 1'
+      end
     end
 end
