@@ -25,4 +25,4 @@ Features
 
 
 6) Known bugs
-  - I cannot link the login page to the script rb files.
+
