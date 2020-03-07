@@ -10,21 +10,21 @@ password = private_password
 # create a driver object and navigate to Instagram
 driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://www.instagram.com/"
-sleep(5)
+sleep(4)
 
 # find and click the login button to go to login screen
-login_button = driver.find_element(xpath: '/html/body/div[1]/section/main/article/div[2]/div[2]/p/a')
-login_button.click
-sleep(3)
+# login_button = driver.find_element(xpath: '/html/body/div[1]/section/main/article/div[2]/div[2]/p/a')
+# login_button.click
+# sleep(3)
 
 # find username and password fields and enter your username and password
-user_text_box = driver.find_element(:xpath => "//*[@id='react-root']/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input")
-password_text_box = driver.find_element(:xpath, "//*[@id='react-root']/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input")
+user_text_box = driver.find_element(:xpath => "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[2]/div/label/input")
+password_text_box = driver.find_element(:xpath => "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[3]/div/label/input")
 user_text_box.send_keys username
 password_text_box.send_keys password
 
 # find and click the login button
-login_button = driver.find_element(:xpath, "//*[@id='react-root']/section/main/div/article/div/div[1]/div/form/div[4]")
+login_button = driver.find_element(:xpath, "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[4]")
 login_button.click
 sleep(5)
 
@@ -40,7 +40,7 @@ sleep(1)
 # Def get_followers
 sleep(5)
 # driver = Selenium::WebDriver.for :chrome
-homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[3]/a')
+homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[4]/a/img')
 homepage_button.click
 sleep(4)
 
@@ -89,7 +89,7 @@ followers_button.click
 sleep(2)
 
 scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div[2]')
-my_range = (1..100)
+my_range = (1..3)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scr1)
   sleep(2)
@@ -127,7 +127,7 @@ followers_button.click
 sleep(2)
 
 scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div[2]')
-my_range = (1..5)
+my_range = (1..3)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scr1)
   sleep(2)
@@ -204,11 +204,6 @@ p final_array2.size
 5.times { |i| final_array2.delete_at(0) }
 
 ##############################################################################################################################################################
-# # 1. clean up list
-# # 2. Iterate through list of users
-# # 3. Go to webpage of a specific user
-# driver.navigate.to "https://www.instagram.com/#{}/"
-# # 4. click th unfollow button
 users = 0
 final_array2.each do |account|
   user_account = account[0].to_s
@@ -242,13 +237,6 @@ final_array2.each do |account|
         else
           puts "user picture was liked2"
         end
-        # code that deals with some exception
-        # driver.navigate.to "https://www.instagram.com/#{user_account}/"
-        # follow_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/header/section/div[1]/div[1]/span/span[1]/button')
-        # follow_button.click
-        # sleep(3)
-      # rescue Exception => e
-      #   puts "User does not have follow button"
       else
         # code that runs only if *no* exception was raised
         puts "user picture was liked1"
@@ -274,10 +262,4 @@ final_array2.each do |account|
       sleep(rand(60))
     end
 end
-
-# //*[@id="react-root"]/section/main/div/header/section/div[2]/button
-# //*[@id="react-root"]/section/main/div/header/section/div[2]/button
-##############################################################################################################################################################
-# PERFORM ACTIONS ON USER PAGE (FOLLOW AND LIKE PICTURE)
-
 
