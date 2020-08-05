@@ -1,15 +1,20 @@
 # INSTAGRAM BOT
 require 'selenium-webdriver'
 require 'open-uri'
+
 require_relative './login_info'
 
 username = private_username
 password = private_password
 
+
 # def login(username, password)
 # create a driver object and navigate to Instagram
-driver = Selenium::WebDriver.for :chrome
-driver.navigate.to "https://www.instagram.com/"
+    driver = Selenium::WebDriver.for :firefox
+    # driver = Selenium::WebDriver.for :chrome
+    driver.navigate.to "https://www.instagram.com/"
+
+
 sleep(4)
 
 # find and click the login button to go to login screen
@@ -28,10 +33,16 @@ login_button = driver.find_element(:xpath, "/html/body/div[1]/section/main/artic
 login_button.click
 sleep(5)
 
-# find and click "not now" on the turn on notification screen
-notifications_button = driver.find_element(:xpath, '/html/body/div[4]/div/div/div[3]/button[2]')
+# find and click "not now" on the save password
+notifications_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/div/div/div/button')
 notifications_button.click
-sleep(1)
+sleep(3)
+# end
+
+# find and click "not now" on the turn on notification screen
+notifications_button = driver.find_element(:xpath, '/html/body/div[4]/div/div/div/div[3]/button[2]')
+notifications_button.click
+sleep(3)
 # end
 
 ##############################################################################################################################################################
@@ -40,9 +51,55 @@ sleep(1)
 # Def get_followers
 sleep(5)
 # driver = Selenium::WebDriver.for :chrome
-homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[4]/a/img')
+homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]/span/img')
 homepage_button.click
 sleep(4)
+# 
+home_dropdown_btn = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]/div[2]/div/div[2]/div[2]/a[1]/div')
+home_dropdown_btn.click
+sleep(4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[2]').click
 # sleep(2)
@@ -81,15 +138,15 @@ sleep(2)
 # homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[3]/a')
 # homepage_button.click
 # sleep(4)
-driver.navigate().refresh()
+# driver.navigate().refresh()
 
-followers_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[3]')
+followers_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[3]/a')
 # followers_button = /html/body/div[1]/section/main/div/header/section/ul/li[3]/a
 followers_button.click
 sleep(2)
 
-scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div[2]')
-my_range = (1..50)
+scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div/div[2]')
+my_range = (1..20)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scr1)
   sleep(2)
@@ -118,16 +175,17 @@ sleep(10)
 # Def get_followers
 sleep(5)
 # driver = Selenium::WebDriver.for :chrome
-driver.navigate.to "https://www.instagram.com/northcoastfest/"
+driver.navigate.to "https://www.instagram.com/livingjewishly/"
+# driver.navigate.to "https://www.instagram.com/hey.alma/"
 
 sleep(4)
 
-followers_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[2]')
+followers_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[2]/a')
 followers_button.click
 sleep(2)
 
-scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div[2]')
-my_range = (1..20)
+scr1 = driver.find_element(:xpath, '/html/body/div[4]/div/div/div[2]')
+my_range = (1..15)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scr1)
   sleep(2)
@@ -213,37 +271,39 @@ final_array2.each do |account|
       puts ""
       puts user_account
       begin
-      # something which might raise an exception
-      # driver.navigate().refresh()
-      first_picture = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[2]/article/div/div/div[1]/div[1]/a/div')
-      first_picture.click
-      sleep(4)
-      puts 'User has pictures'
-      driver.navigate().refresh()
-      like_pic_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div/article/div[2]/section[1]/span[1]/button')
-      like_pic_button.click
-      sleep(2)
-      rescue Exception => e
-        begin
-        first_picture = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div/div[1]/div[1]/a/div/div[2]')
+        # something which might raise an exception
+        # driver.navigate().refresh()
+        first_picture = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[2]/article/div/div/div[1]/div[1]/a/div')
         first_picture.click
         sleep(4)
-        puts 'User has pictures'
+        puts 'User has pictures1'
         driver.navigate().refresh()
-        like_pic_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div/article/div[2]/section[1]/span[1]/button')
+        sleep(2)
+        like_pic_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button')
         like_pic_button.click
+        sleep(2)
         rescue Exception => e
-          puts "user does not have any pictures"
+          begin
+          first_picture = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div/div[1]/div[1]/a/div/div[2]')
+          first_picture.click
+          sleep(4)
+          puts 'User has pictures2'
+          driver.navigate().refresh()
+          sleep(2)
+          like_pic_button = driver.find_element(:xpath, '//*[@id="react-root"]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button')
+          like_pic_button.click
+          rescue Exception => e
+            puts "user does not have any pictures"
+          else
+            puts "user picture was liked2"
+          end
         else
-          puts "user picture was liked2"
+          # code that runs only if *no* exception was raised
+          puts "user picture was liked1"
+        ensure
+          # ensure that this code always runs, no matter what
+          # does not change the final value of the block
         end
-      else
-        # code that runs only if *no* exception was raised
-        puts "user picture was liked1"
-      ensure
-        # ensure that this code always runs, no matter what
-        # does not change the final value of the block
-      end
       begin
       driver.navigate.to "https://www.instagram.com/#{user_account}/"
       sleep(4)
@@ -251,15 +311,21 @@ final_array2.each do |account|
       follow_button.click
       sleep(3)
       rescue Exception => e
-        puts "follow button not found"
-      else
-        puts "account followed"
-      ensure
-        puts "followed block over"
-        users += 1
-        puts users
-      end
+        begin
+        follow_button = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/div[1]/button')
+        follow_button.click
+        sleep(3)        
+        rescue Exception => e
+          puts "follow button not found"
+        else
+          puts "account followed"
+        ensure
+          puts "followed block over"
+          users += 1
+          puts users
+        end
       sleep(rand(60))
     end
+end
 end
 

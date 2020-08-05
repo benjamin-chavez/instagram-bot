@@ -22,6 +22,7 @@ user_text_box = driver.find_element(:xpath => "/html/body/div[1]/section/main/ar
 password_text_box = driver.find_element(:xpath => "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[3]/div/label/input")
 user_text_box.send_keys username
 password_text_box.send_keys password
+sleep(5)
 
 # find and click the login button
 login_button = driver.find_element(:xpath, "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[4]")
@@ -65,8 +66,12 @@ sleep(3)
 
 
 # def follower_list(driver)
-homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]/a/img')
+homepage_button = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]/span/img')
 homepage_button.click
+sleep(4)
+
+home_dropdown_btn = driver.find_element(:xpath, '/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]/div[2]/div/div[2]/div[2]/a[1]/div')
+home_dropdown_btn.click
 sleep(4)
 
 followers_btn = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/header/section/ul/li[2]/a')
@@ -74,7 +79,7 @@ followers_btn.click
 sleep(2)
 
 scroll = driver.find_element(:xpath, '/html/body/div[4]/div/div/div[2]')
-my_range = (1..120)
+my_range = (1..20)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll)
   sleep(2)
@@ -97,7 +102,7 @@ following_btn = driver.find_element(:xpath, '/html/body/div[1]/section/main/div/
 following_btn.click
 sleep(2)
 scroll = driver.find_element(:xpath, '/html/body/div[4]/div/div/div[2]')
-my_range = (1..100)
+my_range = (1..20)
 my_range.each do |paramater|
   driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scroll)
   sleep(2)
